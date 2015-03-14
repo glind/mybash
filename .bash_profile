@@ -305,6 +305,10 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 # Alias python 3
 #alias python='python3'
 #alias pip='pip3'
-
+alias dev='cd ~/Dropbox/PythonApps'
+alias tola='cd ~/Dropbox/PythonApps/tola-activity/htdocs'
+alias mcapi='cd ~/Dropbox/PythonApps/mcapi_project/htdocs'
+alias security='cd ~/Dropbox/PythonApps/security-incident/htdocs'
+alias py=python
 #iTerm Tabs
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
