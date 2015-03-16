@@ -303,10 +303,10 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 # GOOGLE CLOUD
 #
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/glind/gcloud/google-cloud-sdk/path.bash.inc'
+#source '/Users/glind/gcloud/google-cloud-sdk/path.bash.inc'
 
 # The next line enables bash completion for gcloud.
-source '/Users/glind/gcloud/google-cloud-sdk/completion.bash.inc'
+#source '/Users/glind/gcloud/google-cloud-sdk/completion.bash.inc'
 
 
 # PTYHON
