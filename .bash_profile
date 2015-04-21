@@ -300,6 +300,15 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 #   the above create files that are almost all zeros - if random bytes are desired
 #   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
 
+
+# GOOGLE CLOUD
+#
+# The next line updates PATH for the Google Cloud SDK.
+#source '/Users/glind/gcloud/google-cloud-sdk/path.bash.inc'
+
+# The next line enables bash completion for gcloud.
+#source '/Users/glind/gcloud/google-cloud-sdk/completion.bash.inc'
+
 # PTYHON
 #
 # Alias python 3
