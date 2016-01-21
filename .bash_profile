@@ -315,9 +315,9 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 #alias python='python3'
 #alias pip='pip3'
 alias dev='cd ~/Dropbox/PythonApps'
-alias tola='cd ~/Dropbox/PythonApps/tola-activity/htdocs'
-alias tola-data='cd ~/Dropbox/PythonApps/tola-data/htdocs'
-alias tola-work='cd ~/Dropbox/PythonApps/tola-work/'
+alias ta='cd ~/Dropbox/PythonApps/toladata/tolaactivity/'
+alias tt='cd ~/Dropbox/PythonApps/toladata/tolatables'
+alias tw='cd ~/Dropbox/PythonApps/toladata/tolawork'
 alias mcapi='cd ~/Dropbox/PythonApps/mcapi_project/htdocs'
 alias security='cd ~/Dropbox/PythonApps/security-incident/htdocs'
 alias py=python
