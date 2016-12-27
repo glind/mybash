@@ -314,13 +314,13 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 # Alias python 3
 #alias python='python3'
 #alias pip='pip3'
-alias dev='cd ~/Dropbox/PythonApps'
-alias ta='cd ~/Dropbox/PythonApps/toladata/tolaactivity/; git pull origin master; source venv/bin/activate; python manage.py migrate;'
-alias tt='cd ~/Dropbox/PythonApps/toladata/tolatables; git pull origin master; source venv/bin/activate; python manage.py migrate;'
-alias tw='cd ~/Dropbox/PythonApps/toladata/tolawork; git pull origin master; source venv/bin/activate; python manage.py migrate;'
-alias ts='cd ~/Dropbox/PythonApps/toladata/Jupyterhub; git pull origin master; source venv/bin/activate; python manage.py migrate;'
-alias mcapi='cd ~/Dropbox/PythonApps/mcapi_project/htdocs'
-alias security='cd ~/Dropbox/PythonApps/security-incident/htdocs'
+alias dev='cd ~/Projects'
+alias ta='cd ~/Projects/toladata/tolaactivity/; git pull origin; source venv-ta/bin/activate; python manage.py migrate;'
+alias tt='cd ~/Projects/toladata/tolatables; git pull origin; source venv-tt/bin/activate; python manage.py migrate;'
+alias tw='cd ~/Projects/toladata/tolawork; git pull origin; source venv-tw/bin/activate; python manage.py migrate;'
+alias ts='cd ~/Projects/toladata/Jupyterhub; git pull origin; source venv-ts/bin/activate; python manage.py migrate;'
+alias mcapi='cd ~/Projects/mcapi_project/htdocs'
+alias security='cd ~/Projects/security-incident/htdocs'
 alias py=python
 #iTerm Tabs
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
