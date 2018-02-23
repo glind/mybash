@@ -49,6 +49,9 @@
 #   export CLICOLOR=1
 #   export LSCOLORS=ExFxBxDxCxegedabagacad
 
+# Ruby VM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
 
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
@@ -267,7 +270,7 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 
 #   httpDebug:  Download a web page and show info on what took time
 #   -------------------------------------------------------------------
-    httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
+    httpDebug () { /usr/bin/curl $ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
 
 
 #   ---------------------------------------
@@ -315,12 +318,11 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 #alias python='python3'
 #alias pip='pip3'
 alias dev='cd ~/Projects'
-alias ta='cd ~/Projects/toladata/tolaactivity/; git pull origin; source venv-ta/bin/activate; python manage.py migrate;'
-alias tt='cd ~/Projects/toladata/tolatables; git pull origin; source venv-tt/bin/activate; python manage.py migrate;'
-alias tw='cd ~/Projects/toladata/tolawork; git pull origin; source venv-tw/bin/activate; python manage.py migrate;'
-alias ts='cd ~/Projects/toladata/Jupyterhub; git pull origin; source venv-ts/bin/activate; python manage.py migrate;'
-alias mcapi='cd ~/Projects/mcapi_project/htdocs'
-alias security='cd ~/Projects/security-incident/htdocs'
+alias ta='cd ~/Projects/toladata/tolaactivity/; git pull; source venv-ta/bin/activate;'
+alias tt='cd ~/Projects/toladata/tolatables; git pull; source venv-tt/bin/activate;'
+alias tw='cd ~/Projects/toladata/tolawork; git pull; source venv-tw/bin/activate;'
+alias ts='cd ~/Projects/toladata/tolasearch; git pull; source venv-ts/bin/activate;'
+alias el='cd ~/Projects/eLearning; git pull; source venv/bin/activate;'
 alias py=python
 #iTerm Tabs
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
