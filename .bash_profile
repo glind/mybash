@@ -1,7 +1,8 @@
 #  ---------------------------------------------------------------------------
 #  Personal Modification of http://natelandau.com/my-mac-osx-bash_profile/
-#  glind
+#  glindi
 #  Description:  This file holds all my BASH configurations and aliases
+#  also load secrets from environment variables
 #
 #  Sections:
 #  1.   Environment Configuration
@@ -27,6 +28,8 @@
     source ~/.git-prompt.sh
     export PS1="--- @ \h (\u) \[$YELLOW\]\w\n\[$GREEN\]\t\[$RED\]\$(__git_ps1)\[$WHITE\]\$ "
 
+#   Load Secret Environemt Variables
+#   source ~/.secrets_environments_vars
 
 #   Set Paths
 #   ------------------------------------------------------------
@@ -258,20 +261,19 @@ alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when boo
     alias screensaverDesktop='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background'
 
 #   ---------------------------------------
-#   8.  WEB DEVELOPMENT
+#   STATUS & NOTIFICATIONS
 #   ---------------------------------------
-
-alias apacheEdit='sudo edit /etc/httpd/httpd.conf'      # apacheEdit:       Edit httpd.conf
-alias apacheRestart='sudo apachectl graceful'           # apacheRestart:    Restart Apache
-alias editHosts='sudo edit /etc/hosts'                  # editHosts:        Edit /etc/hosts file
-alias herr='tail /var/log/httpd/error_log'              # herr:             Tails HTTP error logs
-alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:   Shows apache error logs
-httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grabs headers from web page
-
-#   httpDebug:  Download a web page and show info on what took time
-#   -------------------------------------------------------------------
-    httpDebug () { /usr/bin/curl $ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
-
+slack_token=SLACK_APITOKEN # obtained from api.slack.com
+ssid=`/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}'`
+if [ "$ssid" == "MyWorkplaceWifi" ]; then
+    /usr/bin/curl https://slack.com/api/users.profile.set --data 'token='$slack_token'&profile=%7B%22status_text%22%3A%20%22In%20the%20office%22%2C%22status_emoji%22%3A%20%22%3Aoffice%3A%22%7D' > /dev/null
+elif [ "$ssid" == "MyHomeWifi" ] || [ "$ssid" == "MyOtherHomeWifi" ]; then
+    /usr/bin/curl https://slack.com/api/users.profile.set --data 'token='$slack_token'&profile=%7B%22status_text%22%3A%20%22Working%20remotely%22%2C%22status_emoji%22%3A%20%22%3Ahouse_with_garden%3A%22%7D' > /dev/null
+elif [ "$ssid" == "attwifi" ] || [ "$ssid" == "Google Starbucks" ]; then
+    /usr/bin/curl https://slack.com/api/users.profile.set --data 'token='$slack_token'&profile=%7B%22status_text%22%3A%20%22At%20the%20coffee%20shop%22%2C%22status_emoji%22%3A%20%22%3Acoffee%3A%22%7D' > /dev/null
+elif [ -n "$ssid" ]; then
+    /usr/bin/curl https://slack.com/api/users.profile.set --data 'token='$slack_token'&profile=%7B%22status_text%22%3A%20%22Somewhere%20unknown...%22%2C%22status_emoji%22%3A%20%22%3Ainterrobang%3A%22%7D' > /dev/null
+fi
 
 #   ---------------------------------------
 #   9.  REMINDERS & NOTES
@@ -303,26 +305,5 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 #   the above create files that are almost all zeros - if random bytes are desired
 #   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
 
-
-# GOOGLE CLOUD
-#
-# The next line updates PATH for the Google Cloud SDK.
-#source '/Users/glind/gcloud/google-cloud-sdk/path.bash.inc'
-
-# The next line enables bash completion for gcloud.
-#source '/Users/glind/gcloud/google-cloud-sdk/completion.bash.inc'
-
-# PTYHON
-#
-# Alias python 3
-#alias python='python3'
-#alias pip='pip3'
-alias dev='cd ~/Projects'
-alias ta='cd ~/Projects/toladata/tolaactivity/; git pull; source venv-ta/bin/activate;'
-alias tt='cd ~/Projects/toladata/tolatables; git pull; source venv-tt/bin/activate;'
-alias tw='cd ~/Projects/toladata/tolawork; git pull; source venv-tw/bin/activate;'
-alias ts='cd ~/Projects/toladata/tolasearch; git pull; source venv-ts/bin/activate;'
-alias el='cd ~/Projects/eLearning; git pull; source venv/bin/activate;'
-alias py=python
 #iTerm Tabs
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
